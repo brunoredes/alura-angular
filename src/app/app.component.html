@@ -1,1 +1,7 @@
-<app-nova-transferencia aria-label="Formulário de transferência de dinheiro"></app-nova-transferencia>
+<app-nova-transferencia
+  aria-label="Formulário de transferência de dinheiro"
+  (toTransfer)="transfer($event)"
+></app-nova-transferencia>
+
+
+<app-extrato aria-label="Extrato de dinheiro recebido"></app-extrato>

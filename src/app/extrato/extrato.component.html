@@ -1,0 +1,21 @@
+<table class="tabela" *ngIf="transferencias?.length; else noTransfer">
+  <thead class="tabela__cabecalho">
+    <th class="tabela__cabecalho__conteudo">Data</th>
+    <th class="tabela__cabecalho__conteudo">Valor</th>
+    <th class="tabela__cabecalho__conteudo">Destino</th>
+  </thead>
+  <tbody>
+    <tr class="tabela__linha" *ngFor="let transferencia of transferencias">
+      <td class="tabela__conteudo">
+        {{ transferencia?.date | date: "short" }}
+      </td>
+      <td class="tabela__conteudo">
+        {{ transferencia?.value | currency: "BRL" }}
+      </td>
+      <td class="tabela__conteudo">{{ transferencia?.recipient }}</td>
+    </tr>
+  </tbody>
+</table>
+<ng-template #noTransfer>
+  <span class="sem-transferencia">Nenhuma transferência cadastrada</span>
+</ng-template>

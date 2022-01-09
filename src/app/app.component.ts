@@ -1,3 +1,5 @@
+import { TransferenciaService } from './services/transferencia.service';
+import { Transfer } from './model/transferencia';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bytebank';
+
+  constructor(private transferService: TransferenciaService) { }
+
+  public transfer(event): void {
+    this.transferService.transfer(event);
+  }
 }
