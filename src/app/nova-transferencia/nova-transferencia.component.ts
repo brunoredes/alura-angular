@@ -1,5 +1,7 @@
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { catchError } from 'rxjs';
 import { Transfer } from './../model/transferencia';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { TransferenciaService } from './../services/transferencia.service';
 
 @Component({
   selector: 'app-nova-transferencia',
@@ -13,16 +15,18 @@ export class NovaTransferenciaComponent implements OnInit {
   public valor: number;
   public destino: number | string;
 
-  constructor() { }
+  constructor(private transferService: TransferenciaService) { }
 
   ngOnInit(): void {
   }
 
   public transferir(): void {
-    console.log('transferiuuuuu');
-    this.toTransfer.emit({ value: this.valor, recipient: this.destino });
-
-    this.limparCampo();
+    const transferObject: Transfer = { value: this.valor, recipient: this.destino };
+    this.transferService.transfer(transferObject)
+      .subscribe(_ => {
+        this.limparCampo()
+      },
+        error => console.error(error));
   }
 
 
