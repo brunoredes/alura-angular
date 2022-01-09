@@ -1,5 +1,11 @@
-<app-nova-transferencia
-  aria-label="Formulário de transferência de dinheiro"
-></app-nova-transferencia>
-
-<app-extrato aria-label="Extrato de dinheiro recebido"></app-extrato>
+<header>
+  <nav>
+    <a routerLink="extrato" routerLinkActive="link-active">Bytebank</a>
+    <a routerLink="nova-transferencia" routerLinkActive="link-active ativo">
+      Nova Transferência
+    </a>
+  </nav>
+</header>
+<main>
+  <router-outlet></router-outlet>
+</main>
